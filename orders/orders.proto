@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package orders;
+
+option go_package = "github.com/rogue0026/marketplace-proto/orders";
+
+import "google/protobuf/empty.proto";
+
+message OrderItem {
+  uint64 product_id = 1;
+  uint64 product_quantity = 2;
+  uint64 price_snapshot = 3;
+}
+
+message CreateNewOrderRequest {
+  uint64 user_id = 1;
+  repeated OrderItem order_items = 2;
+}
+
+message CreateNewOrderResponse {
+  uint64 order_id = 1;
+}
+
+message PayForOrderRequest {
+  uint64 order_id = 1;
+}
+
+service OrderService {
+  rpc CreateNewOrder(CreateNewOrderRequest) returns (CreateNewOrderResponse) {}
+  rpc PayForOrder(PayForOrderRequest) returns (google.protobuf.Empty) {}
+}
