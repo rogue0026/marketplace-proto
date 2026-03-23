@@ -6,6 +6,14 @@ option go_package = "github.com/rogue0026/marketplace-proto/users";
 
 import "google/protobuf/empty.proto";
 
+message BasketProduct {
+  uint64 id = 1;
+  uint64 user_id = 2;
+  uint64 product_id = 3;
+  uint64 product_quantity = 4;
+  uint64 price_per_unit = 5;
+}
+
 message CreateUserRequest {
   string login = 1;
   string password = 2;
@@ -35,6 +43,8 @@ message GetProductsFromBasketRequest {
 
 message GetProductsFromBasketResponse {
   uint64 user_id = 1;
+  repeated BasketProduct basket_items = 2;
+  uint64 total_price = 3;
 }
 
 message AddProductsToBasketRequest {
@@ -46,7 +56,7 @@ message ClearUserBasketRequest {
 }
 
 service UserService {
-  rpc CreateUser(CreateUserRequest) returns (google.protobuf.Empty) {}
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
   rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty) {}
 
   rpc AddMoney(AddMoneyRequest) returns (google.protobuf.Empty) {}
