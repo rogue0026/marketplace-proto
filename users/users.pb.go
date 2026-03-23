@@ -447,10 +447,13 @@ func (x *GetProductsFromBasketResponse) GetTotalPrice() uint64 {
 }
 
 type AddProductsToBasketRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ProductId     uint64                 `protobuf:"varint,1,opt,name=product_id,json=productId,proto3" json:"product_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	UserId          uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ProductId       uint64                 `protobuf:"varint,2,opt,name=product_id,json=productId,proto3" json:"product_id,omitempty"`
+	ProductQuantity uint64                 `protobuf:"varint,3,opt,name=product_quantity,json=productQuantity,proto3" json:"product_quantity,omitempty"`
+	PricePerUnit    uint64                 `protobuf:"varint,4,opt,name=price_per_unit,json=pricePerUnit,proto3" json:"price_per_unit,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *AddProductsToBasketRequest) Reset() {
@@ -483,9 +486,30 @@ func (*AddProductsToBasketRequest) Descriptor() ([]byte, []int) {
 	return file_users_users_proto_rawDescGZIP(), []int{8}
 }
 
+func (x *AddProductsToBasketRequest) GetUserId() uint64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
 func (x *AddProductsToBasketRequest) GetProductId() uint64 {
 	if x != nil {
 		return x.ProductId
+	}
+	return 0
+}
+
+func (x *AddProductsToBasketRequest) GetProductQuantity() uint64 {
+	if x != nil {
+		return x.ProductQuantity
+	}
+	return 0
+}
+
+func (x *AddProductsToBasketRequest) GetPricePerUnit() uint64 {
+	if x != nil {
+		return x.PricePerUnit
 	}
 	return 0
 }
@@ -565,10 +589,13 @@ const file_users_users_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x127\n" +
 	"\fbasket_items\x18\x02 \x03(\v2\x14.users.BasketProductR\vbasketItems\x12\x1f\n" +
 	"\vtotal_price\x18\x03 \x01(\x04R\n" +
-	"totalPrice\";\n" +
-	"\x1aAddProductsToBasketRequest\x12\x1d\n" +
+	"totalPrice\"\xa5\x01\n" +
+	"\x1aAddProductsToBasketRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x1d\n" +
 	"\n" +
-	"product_id\x18\x01 \x01(\x04R\tproductId\"1\n" +
+	"product_id\x18\x02 \x01(\x04R\tproductId\x12)\n" +
+	"\x10product_quantity\x18\x03 \x01(\x04R\x0fproductQuantity\x12$\n" +
+	"\x0eprice_per_unit\x18\x04 \x01(\x04R\fpricePerUnit\"1\n" +
 	"\x16ClearUserBasketRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId2\x9f\x04\n" +
 	"\vUserService\x12C\n" +

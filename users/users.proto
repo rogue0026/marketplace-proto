@@ -48,7 +48,10 @@ message GetProductsFromBasketResponse {
 }
 
 message AddProductsToBasketRequest {
-  uint64 product_id = 1;
+  uint64 user_id = 1;
+  uint64 product_id = 2;
+  uint64 product_quantity = 3;
+  uint64 price_per_unit = 4;
 }
 
 message ClearUserBasketRequest {
