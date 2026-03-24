@@ -7,13 +7,12 @@
 package products
 
 import (
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
-
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	reflect "reflect"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -543,50 +542,6 @@ func (x *ReserveProductsRequest) GetReservations() []*Reservation {
 	return nil
 }
 
-type ReserveProductResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ReservationId uint64                 `protobuf:"varint,1,opt,name=reservation_id,json=reservationId,proto3" json:"reservation_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ReserveProductResponse) Reset() {
-	*x = ReserveProductResponse{}
-	mi := &file_products_products_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ReserveProductResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ReserveProductResponse) ProtoMessage() {}
-
-func (x *ReserveProductResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ReserveProductResponse.ProtoReflect.Descriptor instead.
-func (*ReserveProductResponse) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *ReserveProductResponse) GetReservationId() uint64 {
-	if x != nil {
-		return x.ReservationId
-	}
-	return 0
-}
-
 type CancelReservationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ReservationId uint64                 `protobuf:"varint,1,opt,name=reservation_id,json=reservationId,proto3" json:"reservation_id,omitempty"`
@@ -596,7 +551,7 @@ type CancelReservationRequest struct {
 
 func (x *CancelReservationRequest) Reset() {
 	*x = CancelReservationRequest{}
-	mi := &file_products_products_proto_msgTypes[11]
+	mi := &file_products_products_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -608,7 +563,7 @@ func (x *CancelReservationRequest) String() string {
 func (*CancelReservationRequest) ProtoMessage() {}
 
 func (x *CancelReservationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[11]
+	mi := &file_products_products_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -621,7 +576,7 @@ func (x *CancelReservationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelReservationRequest.ProtoReflect.Descriptor instead.
 func (*CancelReservationRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{11}
+	return file_products_products_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CancelReservationRequest) GetReservationId() uint64 {
@@ -640,7 +595,7 @@ type ConfirmReservationRequest struct {
 
 func (x *ConfirmReservationRequest) Reset() {
 	*x = ConfirmReservationRequest{}
-	mi := &file_products_products_proto_msgTypes[12]
+	mi := &file_products_products_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -652,7 +607,7 @@ func (x *ConfirmReservationRequest) String() string {
 func (*ConfirmReservationRequest) ProtoMessage() {}
 
 func (x *ConfirmReservationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[12]
+	mi := &file_products_products_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -665,7 +620,7 @@ func (x *ConfirmReservationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmReservationRequest.ProtoReflect.Descriptor instead.
 func (*ConfirmReservationRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{12}
+	return file_products_products_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ConfirmReservationRequest) GetReservationId() uint64 {
@@ -716,21 +671,19 @@ const file_products_products_proto_rawDesc = "" +
 	"\x06amount\x18\x02 \x01(\x04R\x06amount\x12\x19\n" +
 	"\border_id\x18\x03 \x01(\x04R\aorderId\"S\n" +
 	"\x16ReserveProductsRequest\x129\n" +
-	"\freservations\x18\x01 \x03(\v2\x15.products.ReservationR\freservations\"?\n" +
-	"\x16ReserveProductResponse\x12%\n" +
-	"\x0ereservation_id\x18\x01 \x01(\x04R\rreservationId\"A\n" +
+	"\freservations\x18\x01 \x03(\v2\x15.products.ReservationR\freservations\"A\n" +
 	"\x18CancelReservationRequest\x12%\n" +
 	"\x0ereservation_id\x18\x01 \x01(\x04R\rreservationId\"B\n" +
 	"\x19ConfirmReservationRequest\x12%\n" +
-	"\x0ereservation_id\x18\x01 \x01(\x04R\rreservationId2\xa6\x05\n" +
+	"\x0ereservation_id\x18\x01 \x01(\x04R\rreservationId2\x9c\x05\n" +
 	"\x0eProductService\x12O\n" +
 	"\fShowProducts\x12\x1d.products.ShowProductsRequest\x1a\x1e.products.ShowProductsResponse\"\x00\x12I\n" +
 	"\n" +
 	"AddProduct\x12\x1b.products.AddProductRequest\x1a\x1c.products.AddProductResponse\"\x00\x12I\n" +
 	"\rDeleteProduct\x12\x1e.products.DeleteProductRequest\x1a\x16.google.protobuf.Empty\"\x00\x12U\n" +
 	"\x17IncreaseProductQuantity\x12 .products.IncreaseProductRequest\x1a\x16.google.protobuf.Empty\"\x00\x12U\n" +
-	"\x17DecreaseProductQuantity\x12 .products.DecreaseProductRequest\x1a\x16.google.protobuf.Empty\"\x00\x12W\n" +
-	"\x0fReserveProducts\x12 .products.ReserveProductsRequest\x1a .products.ReserveProductResponse\"\x00\x12Q\n" +
+	"\x17DecreaseProductQuantity\x12 .products.DecreaseProductRequest\x1a\x16.google.protobuf.Empty\"\x00\x12M\n" +
+	"\x0fReserveProducts\x12 .products.ReserveProductsRequest\x1a\x16.google.protobuf.Empty\"\x00\x12Q\n" +
 	"\x11CancelReservation\x12\".products.CancelReservationRequest\x1a\x16.google.protobuf.Empty\"\x00\x12S\n" +
 	"\x12ConfirmReservation\x12#.products.ConfirmReservationRequest\x1a\x16.google.protobuf.Empty\"\x00B1Z/github.com/rogue0026/marketplace-proto/productsb\x06proto3"
 
@@ -746,7 +699,7 @@ func file_products_products_proto_rawDescGZIP() []byte {
 	return file_products_products_proto_rawDescData
 }
 
-var file_products_products_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_products_products_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_products_products_proto_goTypes = []any{
 	(*Product)(nil),                   // 0: products.Product
 	(*ShowProductsRequest)(nil),       // 1: products.ShowProductsRequest
@@ -758,10 +711,9 @@ var file_products_products_proto_goTypes = []any{
 	(*DecreaseProductRequest)(nil),    // 7: products.DecreaseProductRequest
 	(*Reservation)(nil),               // 8: products.Reservation
 	(*ReserveProductsRequest)(nil),    // 9: products.ReserveProductsRequest
-	(*ReserveProductResponse)(nil),    // 10: products.ReserveProductResponse
-	(*CancelReservationRequest)(nil),  // 11: products.CancelReservationRequest
-	(*ConfirmReservationRequest)(nil), // 12: products.ConfirmReservationRequest
-	(*emptypb.Empty)(nil),             // 13: google.protobuf.Empty
+	(*CancelReservationRequest)(nil),  // 10: products.CancelReservationRequest
+	(*ConfirmReservationRequest)(nil), // 11: products.ConfirmReservationRequest
+	(*emptypb.Empty)(nil),             // 12: google.protobuf.Empty
 }
 var file_products_products_proto_depIdxs = []int32{
 	0,  // 0: products.ShowProductsResponse.products:type_name -> products.Product
@@ -772,16 +724,16 @@ var file_products_products_proto_depIdxs = []int32{
 	6,  // 5: products.ProductService.IncreaseProductQuantity:input_type -> products.IncreaseProductRequest
 	7,  // 6: products.ProductService.DecreaseProductQuantity:input_type -> products.DecreaseProductRequest
 	9,  // 7: products.ProductService.ReserveProducts:input_type -> products.ReserveProductsRequest
-	11, // 8: products.ProductService.CancelReservation:input_type -> products.CancelReservationRequest
-	12, // 9: products.ProductService.ConfirmReservation:input_type -> products.ConfirmReservationRequest
+	10, // 8: products.ProductService.CancelReservation:input_type -> products.CancelReservationRequest
+	11, // 9: products.ProductService.ConfirmReservation:input_type -> products.ConfirmReservationRequest
 	2,  // 10: products.ProductService.ShowProducts:output_type -> products.ShowProductsResponse
 	4,  // 11: products.ProductService.AddProduct:output_type -> products.AddProductResponse
-	13, // 12: products.ProductService.DeleteProduct:output_type -> google.protobuf.Empty
-	13, // 13: products.ProductService.IncreaseProductQuantity:output_type -> google.protobuf.Empty
-	13, // 14: products.ProductService.DecreaseProductQuantity:output_type -> google.protobuf.Empty
-	10, // 15: products.ProductService.ReserveProducts:output_type -> products.ReserveProductResponse
-	13, // 16: products.ProductService.CancelReservation:output_type -> google.protobuf.Empty
-	13, // 17: products.ProductService.ConfirmReservation:output_type -> google.protobuf.Empty
+	12, // 12: products.ProductService.DeleteProduct:output_type -> google.protobuf.Empty
+	12, // 13: products.ProductService.IncreaseProductQuantity:output_type -> google.protobuf.Empty
+	12, // 14: products.ProductService.DecreaseProductQuantity:output_type -> google.protobuf.Empty
+	12, // 15: products.ProductService.ReserveProducts:output_type -> google.protobuf.Empty
+	12, // 16: products.ProductService.CancelReservation:output_type -> google.protobuf.Empty
+	12, // 17: products.ProductService.ConfirmReservation:output_type -> google.protobuf.Empty
 	10, // [10:18] is the sub-list for method output_type
 	2,  // [2:10] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
@@ -800,7 +752,7 @@ func file_products_products_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_products_products_proto_rawDesc), len(file_products_products_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

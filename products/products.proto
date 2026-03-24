@@ -55,10 +55,6 @@ message ReserveProductsRequest {
    repeated Reservation reservations = 1;
 }
 
-message ReserveProductResponse {
-  uint64 reservation_id = 1;
-}
-
 message CancelReservationRequest {
   uint64 reservation_id = 1;
 }
@@ -74,7 +70,7 @@ service ProductService {
   rpc IncreaseProductQuantity(IncreaseProductRequest) returns (google.protobuf.Empty) {}
   rpc DecreaseProductQuantity(DecreaseProductRequest) returns (google.protobuf.Empty) {}
 
-  rpc ReserveProducts(ReserveProductsRequest) returns (ReserveProductResponse) {}
+  rpc ReserveProducts(ReserveProductsRequest) returns (google.protobuf.Empty) {}
   rpc CancelReservation(CancelReservationRequest) returns (google.protobuf.Empty) {}
   rpc ConfirmReservation(ConfirmReservationRequest) returns (google.protobuf.Empty) {}
 }

@@ -39,7 +39,7 @@ type ProductServiceClient interface {
 	DeleteProduct(ctx context.Context, in *DeleteProductRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	IncreaseProductQuantity(ctx context.Context, in *IncreaseProductRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	DecreaseProductQuantity(ctx context.Context, in *DecreaseProductRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	ReserveProducts(ctx context.Context, in *ReserveProductsRequest, opts ...grpc.CallOption) (*ReserveProductResponse, error)
+	ReserveProducts(ctx context.Context, in *ReserveProductsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	CancelReservation(ctx context.Context, in *CancelReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	ConfirmReservation(ctx context.Context, in *ConfirmReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
@@ -102,9 +102,9 @@ func (c *productServiceClient) DecreaseProductQuantity(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *productServiceClient) ReserveProducts(ctx context.Context, in *ReserveProductsRequest, opts ...grpc.CallOption) (*ReserveProductResponse, error) {
+func (c *productServiceClient) ReserveProducts(ctx context.Context, in *ReserveProductsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReserveProductResponse)
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, ProductService_ReserveProducts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -141,7 +141,7 @@ type ProductServiceServer interface {
 	DeleteProduct(context.Context, *DeleteProductRequest) (*emptypb.Empty, error)
 	IncreaseProductQuantity(context.Context, *IncreaseProductRequest) (*emptypb.Empty, error)
 	DecreaseProductQuantity(context.Context, *DecreaseProductRequest) (*emptypb.Empty, error)
-	ReserveProducts(context.Context, *ReserveProductsRequest) (*ReserveProductResponse, error)
+	ReserveProducts(context.Context, *ReserveProductsRequest) (*emptypb.Empty, error)
 	CancelReservation(context.Context, *CancelReservationRequest) (*emptypb.Empty, error)
 	ConfirmReservation(context.Context, *ConfirmReservationRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedProductServiceServer()
@@ -169,7 +169,7 @@ func (UnimplementedProductServiceServer) IncreaseProductQuantity(context.Context
 func (UnimplementedProductServiceServer) DecreaseProductQuantity(context.Context, *DecreaseProductRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method DecreaseProductQuantity not implemented")
 }
-func (UnimplementedProductServiceServer) ReserveProducts(context.Context, *ReserveProductsRequest) (*ReserveProductResponse, error) {
+func (UnimplementedProductServiceServer) ReserveProducts(context.Context, *ReserveProductsRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method ReserveProducts not implemented")
 }
 func (UnimplementedProductServiceServer) CancelReservation(context.Context, *CancelReservationRequest) (*emptypb.Empty, error) {
