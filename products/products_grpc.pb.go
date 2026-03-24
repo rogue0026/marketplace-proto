@@ -27,7 +27,7 @@ const (
 	ProductService_DecreaseProductQuantity_FullMethodName = "/products.ProductService/DecreaseProductQuantity"
 	ProductService_ReserveProducts_FullMethodName         = "/products.ProductService/ReserveProducts"
 	ProductService_CancelReservation_FullMethodName       = "/products.ProductService/CancelReservation"
-	ProductService_ConfirmReservation_FullMethodName      = "/products.ProductService/ConfirmReservation"
+	ProductService_DeleteReservation_FullMethodName       = "/products.ProductService/DeleteReservation"
 )
 
 // ProductServiceClient is the client API for ProductService service.
@@ -41,7 +41,7 @@ type ProductServiceClient interface {
 	DecreaseProductQuantity(ctx context.Context, in *DecreaseProductRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	ReserveProducts(ctx context.Context, in *ReserveProductsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	CancelReservation(ctx context.Context, in *CancelReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	ConfirmReservation(ctx context.Context, in *ConfirmReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	DeleteReservation(ctx context.Context, in *DeleteReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type productServiceClient struct {
@@ -122,10 +122,10 @@ func (c *productServiceClient) CancelReservation(ctx context.Context, in *Cancel
 	return out, nil
 }
 
-func (c *productServiceClient) ConfirmReservation(ctx context.Context, in *ConfirmReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+func (c *productServiceClient) DeleteReservation(ctx context.Context, in *DeleteReservationRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, ProductService_ConfirmReservation_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, ProductService_DeleteReservation_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -143,7 +143,7 @@ type ProductServiceServer interface {
 	DecreaseProductQuantity(context.Context, *DecreaseProductRequest) (*emptypb.Empty, error)
 	ReserveProducts(context.Context, *ReserveProductsRequest) (*emptypb.Empty, error)
 	CancelReservation(context.Context, *CancelReservationRequest) (*emptypb.Empty, error)
-	ConfirmReservation(context.Context, *ConfirmReservationRequest) (*emptypb.Empty, error)
+	DeleteReservation(context.Context, *DeleteReservationRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedProductServiceServer()
 }
 
@@ -175,8 +175,8 @@ func (UnimplementedProductServiceServer) ReserveProducts(context.Context, *Reser
 func (UnimplementedProductServiceServer) CancelReservation(context.Context, *CancelReservationRequest) (*emptypb.Empty, error) {
 	return nil, status.Error(codes.Unimplemented, "method CancelReservation not implemented")
 }
-func (UnimplementedProductServiceServer) ConfirmReservation(context.Context, *ConfirmReservationRequest) (*emptypb.Empty, error) {
-	return nil, status.Error(codes.Unimplemented, "method ConfirmReservation not implemented")
+func (UnimplementedProductServiceServer) DeleteReservation(context.Context, *DeleteReservationRequest) (*emptypb.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteReservation not implemented")
 }
 func (UnimplementedProductServiceServer) mustEmbedUnimplementedProductServiceServer() {}
 func (UnimplementedProductServiceServer) testEmbeddedByValue()                        {}
@@ -325,20 +325,20 @@ func _ProductService_CancelReservation_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductService_ConfirmReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConfirmReservationRequest)
+func _ProductService_DeleteReservation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteReservationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServiceServer).ConfirmReservation(ctx, in)
+		return srv.(ProductServiceServer).DeleteReservation(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductService_ConfirmReservation_FullMethodName,
+		FullMethod: ProductService_DeleteReservation_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServiceServer).ConfirmReservation(ctx, req.(*ConfirmReservationRequest))
+		return srv.(ProductServiceServer).DeleteReservation(ctx, req.(*DeleteReservationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -379,8 +379,8 @@ var ProductService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProductService_CancelReservation_Handler,
 		},
 		{
-			MethodName: "ConfirmReservation",
-			Handler:    _ProductService_ConfirmReservation_Handler,
+			MethodName: "DeleteReservation",
+			Handler:    _ProductService_DeleteReservation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

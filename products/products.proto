@@ -59,7 +59,7 @@ message CancelReservationRequest {
   uint64 order_id = 1;
 }
 
-message ConfirmReservationRequest {
+message DeleteReservationRequest {
   uint64 order_id = 1;
 }
 
@@ -69,8 +69,7 @@ service ProductService {
   rpc DeleteProduct(DeleteProductRequest) returns (google.protobuf.Empty) {}
   rpc IncreaseProductQuantity(IncreaseProductRequest) returns (google.protobuf.Empty) {}
   rpc DecreaseProductQuantity(DecreaseProductRequest) returns (google.protobuf.Empty) {}
-
   rpc ReserveProducts(ReserveProductsRequest) returns (google.protobuf.Empty) {}
   rpc CancelReservation(CancelReservationRequest) returns (google.protobuf.Empty) {}
-  rpc ConfirmReservation(ConfirmReservationRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteReservation(DeleteReservationRequest) returns (google.protobuf.Empty) {}
 }
