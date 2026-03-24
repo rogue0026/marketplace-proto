@@ -60,7 +60,7 @@ message CancelReservationRequest {
 }
 
 message ConfirmReservationRequest {
-  uint64 reservation_id = 1;
+  uint64 order_id = 1;
 }
 
 service ProductService {
