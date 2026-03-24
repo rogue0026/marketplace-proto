@@ -544,7 +544,7 @@ func (x *ReserveProductsRequest) GetReservations() []*Reservation {
 
 type CancelReservationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ReservationId uint64                 `protobuf:"varint,1,opt,name=reservation_id,json=reservationId,proto3" json:"reservation_id,omitempty"`
+	OrderId       uint64                 `protobuf:"varint,1,opt,name=order_id,json=orderId,proto3" json:"order_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -579,9 +579,9 @@ func (*CancelReservationRequest) Descriptor() ([]byte, []int) {
 	return file_products_products_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *CancelReservationRequest) GetReservationId() uint64 {
+func (x *CancelReservationRequest) GetOrderId() uint64 {
 	if x != nil {
-		return x.ReservationId
+		return x.OrderId
 	}
 	return 0
 }
@@ -671,9 +671,9 @@ const file_products_products_proto_rawDesc = "" +
 	"\x06amount\x18\x02 \x01(\x04R\x06amount\x12\x19\n" +
 	"\border_id\x18\x03 \x01(\x04R\aorderId\"S\n" +
 	"\x16ReserveProductsRequest\x129\n" +
-	"\freservations\x18\x01 \x03(\v2\x15.products.ReservationR\freservations\"A\n" +
-	"\x18CancelReservationRequest\x12%\n" +
-	"\x0ereservation_id\x18\x01 \x01(\x04R\rreservationId\"B\n" +
+	"\freservations\x18\x01 \x03(\v2\x15.products.ReservationR\freservations\"5\n" +
+	"\x18CancelReservationRequest\x12\x19\n" +
+	"\border_id\x18\x01 \x01(\x04R\aorderId\"B\n" +
 	"\x19ConfirmReservationRequest\x12%\n" +
 	"\x0ereservation_id\x18\x01 \x01(\x04R\rreservationId2\x9c\x05\n" +
 	"\x0eProductService\x12O\n" +
