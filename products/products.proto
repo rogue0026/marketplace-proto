@@ -5,7 +5,6 @@ package products;
 option go_package = "github.com/rogue0026/marketplace-proto/products";
 
 import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
 
 message Product {
   uint64 product_id = 1;
@@ -47,11 +46,13 @@ message DecreaseProductRequest {
   uint64 amount = 2;
 }
 
+message Reservation {
+    uint64 product_id = 1;
+    uint64 amount = 2;
+    uint64 order_id = 3;
+}
 message ReserveProductsRequest {
-  uint64 product_id = 1;
-  uint64 amount = 2;
-  uint64 order_id = 3;
-  google.protobuf.Timestamp expires_at = 4;
+   repeated Reservation reservations = 1;
 }
 
 message ReserveProductResponse {
