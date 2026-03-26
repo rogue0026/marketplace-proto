@@ -23,14 +23,11 @@ const (
 )
 
 type BasketProduct struct {
-	state           protoimpl.MessageState `protogen:"open.v1"`
-	Id              uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	UserId          uint64                 `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	ProductId       uint64                 `protobuf:"varint,3,opt,name=product_id,json=productId,proto3" json:"product_id,omitempty"`
-	ProductQuantity uint64                 `protobuf:"varint,4,opt,name=product_quantity,json=productQuantity,proto3" json:"product_quantity,omitempty"`
-	PricePerUnit    uint64                 `protobuf:"varint,5,opt,name=price_per_unit,json=pricePerUnit,proto3" json:"price_per_unit,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Quantity      uint64                 `protobuf:"varint,2,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *BasketProduct) Reset() {
@@ -70,30 +67,9 @@ func (x *BasketProduct) GetId() uint64 {
 	return 0
 }
 
-func (x *BasketProduct) GetUserId() uint64 {
+func (x *BasketProduct) GetQuantity() uint64 {
 	if x != nil {
-		return x.UserId
-	}
-	return 0
-}
-
-func (x *BasketProduct) GetProductId() uint64 {
-	if x != nil {
-		return x.ProductId
-	}
-	return 0
-}
-
-func (x *BasketProduct) GetProductQuantity() uint64 {
-	if x != nil {
-		return x.ProductQuantity
-	}
-	return 0
-}
-
-func (x *BasketProduct) GetPricePerUnit() uint64 {
-	if x != nil {
-		return x.PricePerUnit
+		return x.Quantity
 	}
 	return 0
 }
@@ -390,7 +366,6 @@ type GetProductsFromBasketResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	BasketItems   []*BasketProduct       `protobuf:"bytes,2,rep,name=basket_items,json=basketItems,proto3" json:"basket_items,omitempty"`
-	TotalPrice    uint64                 `protobuf:"varint,3,opt,name=total_price,json=totalPrice,proto3" json:"total_price,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -439,19 +414,11 @@ func (x *GetProductsFromBasketResponse) GetBasketItems() []*BasketProduct {
 	return nil
 }
 
-func (x *GetProductsFromBasketResponse) GetTotalPrice() uint64 {
-	if x != nil {
-		return x.TotalPrice
-	}
-	return 0
-}
-
 type AddProductsToBasketRequest struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	UserId          uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	ProductId       uint64                 `protobuf:"varint,2,opt,name=product_id,json=productId,proto3" json:"product_id,omitempty"`
 	ProductQuantity uint64                 `protobuf:"varint,3,opt,name=product_quantity,json=productQuantity,proto3" json:"product_quantity,omitempty"`
-	PricePerUnit    uint64                 `protobuf:"varint,4,opt,name=price_per_unit,json=pricePerUnit,proto3" json:"price_per_unit,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -507,13 +474,6 @@ func (x *AddProductsToBasketRequest) GetProductQuantity() uint64 {
 	return 0
 }
 
-func (x *AddProductsToBasketRequest) GetPricePerUnit() uint64 {
-	if x != nil {
-		return x.PricePerUnit
-	}
-	return 0
-}
-
 type ClearUserBasketRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -562,14 +522,10 @@ var File_users_users_proto protoreflect.FileDescriptor
 
 const file_users_users_proto_rawDesc = "" +
 	"\n" +
-	"\x11users/users.proto\x12\x05users\x1a\x1bgoogle/protobuf/empty.proto\"\xa8\x01\n" +
+	"\x11users/users.proto\x12\x05users\x1a\x1bgoogle/protobuf/empty.proto\";\n" +
 	"\rBasketProduct\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\x04R\x06userId\x12\x1d\n" +
-	"\n" +
-	"product_id\x18\x03 \x01(\x04R\tproductId\x12)\n" +
-	"\x10product_quantity\x18\x04 \x01(\x04R\x0fproductQuantity\x12$\n" +
-	"\x0eprice_per_unit\x18\x05 \x01(\x04R\fpricePerUnit\"E\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1a\n" +
+	"\bquantity\x18\x02 \x01(\x04R\bquantity\"E\n" +
 	"\x11CreateUserRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"-\n" +
@@ -584,18 +540,15 @@ const file_users_users_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x16\n" +
 	"\x06amount\x18\x02 \x01(\x04R\x06amount\"7\n" +
 	"\x1cGetProductsFromBasketRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x04R\x06userId\"\x92\x01\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\"q\n" +
 	"\x1dGetProductsFromBasketResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x127\n" +
-	"\fbasket_items\x18\x02 \x03(\v2\x14.users.BasketProductR\vbasketItems\x12\x1f\n" +
-	"\vtotal_price\x18\x03 \x01(\x04R\n" +
-	"totalPrice\"\xa5\x01\n" +
+	"\fbasket_items\x18\x02 \x03(\v2\x14.users.BasketProductR\vbasketItems\"\x7f\n" +
 	"\x1aAddProductsToBasketRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x1d\n" +
 	"\n" +
 	"product_id\x18\x02 \x01(\x04R\tproductId\x12)\n" +
-	"\x10product_quantity\x18\x03 \x01(\x04R\x0fproductQuantity\x12$\n" +
-	"\x0eprice_per_unit\x18\x04 \x01(\x04R\fpricePerUnit\"1\n" +
+	"\x10product_quantity\x18\x03 \x01(\x04R\x0fproductQuantity\"1\n" +
 	"\x16ClearUserBasketRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId2\x9f\x04\n" +
 	"\vUserService\x12C\n" +
