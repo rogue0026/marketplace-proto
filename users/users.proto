@@ -39,8 +39,7 @@ message GetProductsFromBasketRequest {
 }
 
 message GetProductsFromBasketResponse {
-  uint64 user_id = 1;
-  repeated BasketProduct basket_items = 2;
+  repeated BasketProduct basket_items = 1;
 }
 
 message AddProductsToBasketRequest {

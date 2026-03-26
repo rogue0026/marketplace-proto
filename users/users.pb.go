@@ -364,8 +364,7 @@ func (x *GetProductsFromBasketRequest) GetUserId() uint64 {
 
 type GetProductsFromBasketResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	BasketItems   []*BasketProduct       `protobuf:"bytes,2,rep,name=basket_items,json=basketItems,proto3" json:"basket_items,omitempty"`
+	BasketItems   []*BasketProduct       `protobuf:"bytes,1,rep,name=basket_items,json=basketItems,proto3" json:"basket_items,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -398,13 +397,6 @@ func (x *GetProductsFromBasketResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetProductsFromBasketResponse.ProtoReflect.Descriptor instead.
 func (*GetProductsFromBasketResponse) Descriptor() ([]byte, []int) {
 	return file_users_users_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *GetProductsFromBasketResponse) GetUserId() uint64 {
-	if x != nil {
-		return x.UserId
-	}
-	return 0
 }
 
 func (x *GetProductsFromBasketResponse) GetBasketItems() []*BasketProduct {
@@ -540,10 +532,9 @@ const file_users_users_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x16\n" +
 	"\x06amount\x18\x02 \x01(\x04R\x06amount\"7\n" +
 	"\x1cGetProductsFromBasketRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x04R\x06userId\"q\n" +
-	"\x1dGetProductsFromBasketResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x04R\x06userId\x127\n" +
-	"\fbasket_items\x18\x02 \x03(\v2\x14.users.BasketProductR\vbasketItems\"\x7f\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\"X\n" +
+	"\x1dGetProductsFromBasketResponse\x127\n" +
+	"\fbasket_items\x18\x01 \x03(\v2\x14.users.BasketProductR\vbasketItems\"\x7f\n" +
 	"\x1aAddProductsToBasketRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x1d\n" +
 	"\n" +
