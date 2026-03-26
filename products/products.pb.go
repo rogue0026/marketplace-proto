@@ -142,6 +142,50 @@ func (x *ShowProductsRequest) GetItemsPerPage() uint64 {
 	return 0
 }
 
+type ShowProductsByIdsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ids           []uint64               `protobuf:"varint,1,rep,packed,name=ids,proto3" json:"ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ShowProductsByIdsRequest) Reset() {
+	*x = ShowProductsByIdsRequest{}
+	mi := &file_products_products_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ShowProductsByIdsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ShowProductsByIdsRequest) ProtoMessage() {}
+
+func (x *ShowProductsByIdsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_products_products_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ShowProductsByIdsRequest.ProtoReflect.Descriptor instead.
+func (*ShowProductsByIdsRequest) Descriptor() ([]byte, []int) {
+	return file_products_products_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ShowProductsByIdsRequest) GetIds() []uint64 {
+	if x != nil {
+		return x.Ids
+	}
+	return nil
+}
+
 type ShowProductsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Products      []*Product             `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
@@ -151,7 +195,7 @@ type ShowProductsResponse struct {
 
 func (x *ShowProductsResponse) Reset() {
 	*x = ShowProductsResponse{}
-	mi := &file_products_products_proto_msgTypes[2]
+	mi := &file_products_products_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -163,7 +207,7 @@ func (x *ShowProductsResponse) String() string {
 func (*ShowProductsResponse) ProtoMessage() {}
 
 func (x *ShowProductsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[2]
+	mi := &file_products_products_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -176,7 +220,7 @@ func (x *ShowProductsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ShowProductsResponse.ProtoReflect.Descriptor instead.
 func (*ShowProductsResponse) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{2}
+	return file_products_products_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ShowProductsResponse) GetProducts() []*Product {
@@ -197,7 +241,7 @@ type AddProductRequest struct {
 
 func (x *AddProductRequest) Reset() {
 	*x = AddProductRequest{}
-	mi := &file_products_products_proto_msgTypes[3]
+	mi := &file_products_products_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -209,7 +253,7 @@ func (x *AddProductRequest) String() string {
 func (*AddProductRequest) ProtoMessage() {}
 
 func (x *AddProductRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[3]
+	mi := &file_products_products_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -222,7 +266,7 @@ func (x *AddProductRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddProductRequest.ProtoReflect.Descriptor instead.
 func (*AddProductRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{3}
+	return file_products_products_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *AddProductRequest) GetName() string {
@@ -255,7 +299,7 @@ type AddProductResponse struct {
 
 func (x *AddProductResponse) Reset() {
 	*x = AddProductResponse{}
-	mi := &file_products_products_proto_msgTypes[4]
+	mi := &file_products_products_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -267,7 +311,7 @@ func (x *AddProductResponse) String() string {
 func (*AddProductResponse) ProtoMessage() {}
 
 func (x *AddProductResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[4]
+	mi := &file_products_products_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -280,7 +324,7 @@ func (x *AddProductResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddProductResponse.ProtoReflect.Descriptor instead.
 func (*AddProductResponse) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{4}
+	return file_products_products_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *AddProductResponse) GetProductId() uint64 {
@@ -299,7 +343,7 @@ type DeleteProductRequest struct {
 
 func (x *DeleteProductRequest) Reset() {
 	*x = DeleteProductRequest{}
-	mi := &file_products_products_proto_msgTypes[5]
+	mi := &file_products_products_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -311,7 +355,7 @@ func (x *DeleteProductRequest) String() string {
 func (*DeleteProductRequest) ProtoMessage() {}
 
 func (x *DeleteProductRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[5]
+	mi := &file_products_products_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -324,7 +368,7 @@ func (x *DeleteProductRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteProductRequest.ProtoReflect.Descriptor instead.
 func (*DeleteProductRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{5}
+	return file_products_products_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DeleteProductRequest) GetProductId() uint64 {
@@ -344,7 +388,7 @@ type IncreaseProductRequest struct {
 
 func (x *IncreaseProductRequest) Reset() {
 	*x = IncreaseProductRequest{}
-	mi := &file_products_products_proto_msgTypes[6]
+	mi := &file_products_products_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -356,7 +400,7 @@ func (x *IncreaseProductRequest) String() string {
 func (*IncreaseProductRequest) ProtoMessage() {}
 
 func (x *IncreaseProductRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[6]
+	mi := &file_products_products_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -369,7 +413,7 @@ func (x *IncreaseProductRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IncreaseProductRequest.ProtoReflect.Descriptor instead.
 func (*IncreaseProductRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{6}
+	return file_products_products_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *IncreaseProductRequest) GetProductId() uint64 {
@@ -396,7 +440,7 @@ type DecreaseProductRequest struct {
 
 func (x *DecreaseProductRequest) Reset() {
 	*x = DecreaseProductRequest{}
-	mi := &file_products_products_proto_msgTypes[7]
+	mi := &file_products_products_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -408,7 +452,7 @@ func (x *DecreaseProductRequest) String() string {
 func (*DecreaseProductRequest) ProtoMessage() {}
 
 func (x *DecreaseProductRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[7]
+	mi := &file_products_products_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -421,7 +465,7 @@ func (x *DecreaseProductRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DecreaseProductRequest.ProtoReflect.Descriptor instead.
 func (*DecreaseProductRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{7}
+	return file_products_products_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *DecreaseProductRequest) GetProductId() uint64 {
@@ -449,7 +493,7 @@ type Reservation struct {
 
 func (x *Reservation) Reset() {
 	*x = Reservation{}
-	mi := &file_products_products_proto_msgTypes[8]
+	mi := &file_products_products_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -461,7 +505,7 @@ func (x *Reservation) String() string {
 func (*Reservation) ProtoMessage() {}
 
 func (x *Reservation) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[8]
+	mi := &file_products_products_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -474,7 +518,7 @@ func (x *Reservation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Reservation.ProtoReflect.Descriptor instead.
 func (*Reservation) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{8}
+	return file_products_products_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Reservation) GetProductId() uint64 {
@@ -507,7 +551,7 @@ type ReserveProductsRequest struct {
 
 func (x *ReserveProductsRequest) Reset() {
 	*x = ReserveProductsRequest{}
-	mi := &file_products_products_proto_msgTypes[9]
+	mi := &file_products_products_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -519,7 +563,7 @@ func (x *ReserveProductsRequest) String() string {
 func (*ReserveProductsRequest) ProtoMessage() {}
 
 func (x *ReserveProductsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[9]
+	mi := &file_products_products_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -532,7 +576,7 @@ func (x *ReserveProductsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReserveProductsRequest.ProtoReflect.Descriptor instead.
 func (*ReserveProductsRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{9}
+	return file_products_products_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ReserveProductsRequest) GetReservations() []*Reservation {
@@ -551,7 +595,7 @@ type CancelReservationRequest struct {
 
 func (x *CancelReservationRequest) Reset() {
 	*x = CancelReservationRequest{}
-	mi := &file_products_products_proto_msgTypes[10]
+	mi := &file_products_products_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -563,7 +607,7 @@ func (x *CancelReservationRequest) String() string {
 func (*CancelReservationRequest) ProtoMessage() {}
 
 func (x *CancelReservationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[10]
+	mi := &file_products_products_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -576,7 +620,7 @@ func (x *CancelReservationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelReservationRequest.ProtoReflect.Descriptor instead.
 func (*CancelReservationRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{10}
+	return file_products_products_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CancelReservationRequest) GetOrderId() uint64 {
@@ -595,7 +639,7 @@ type DeleteReservationRequest struct {
 
 func (x *DeleteReservationRequest) Reset() {
 	*x = DeleteReservationRequest{}
-	mi := &file_products_products_proto_msgTypes[11]
+	mi := &file_products_products_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -607,7 +651,7 @@ func (x *DeleteReservationRequest) String() string {
 func (*DeleteReservationRequest) ProtoMessage() {}
 
 func (x *DeleteReservationRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_products_products_proto_msgTypes[11]
+	mi := &file_products_products_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -620,7 +664,7 @@ func (x *DeleteReservationRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteReservationRequest.ProtoReflect.Descriptor instead.
 func (*DeleteReservationRequest) Descriptor() ([]byte, []int) {
-	return file_products_products_proto_rawDescGZIP(), []int{11}
+	return file_products_products_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteReservationRequest) GetOrderId() uint64 {
@@ -644,7 +688,9 @@ const file_products_products_proto_rawDesc = "" +
 	"\x13ShowProductsRequest\x12\x1f\n" +
 	"\vpage_number\x18\x01 \x01(\x04R\n" +
 	"pageNumber\x12$\n" +
-	"\x0eitems_per_page\x18\x02 \x01(\x04R\fitemsPerPage\"E\n" +
+	"\x0eitems_per_page\x18\x02 \x01(\x04R\fitemsPerPage\",\n" +
+	"\x18ShowProductsByIdsRequest\x12\x10\n" +
+	"\x03ids\x18\x01 \x03(\x04R\x03ids\"E\n" +
 	"\x14ShowProductsResponse\x12-\n" +
 	"\bproducts\x18\x01 \x03(\v2\x11.products.ProductR\bproducts\"u\n" +
 	"\x11AddProductRequest\x12\x12\n" +
@@ -675,9 +721,10 @@ const file_products_products_proto_rawDesc = "" +
 	"\x18CancelReservationRequest\x12\x19\n" +
 	"\border_id\x18\x01 \x01(\x04R\aorderId\"5\n" +
 	"\x18DeleteReservationRequest\x12\x19\n" +
-	"\border_id\x18\x01 \x01(\x04R\aorderId2\x9a\x05\n" +
+	"\border_id\x18\x01 \x01(\x04R\aorderId2\xf5\x05\n" +
 	"\x0eProductService\x12O\n" +
-	"\fShowProducts\x12\x1d.products.ShowProductsRequest\x1a\x1e.products.ShowProductsResponse\"\x00\x12I\n" +
+	"\fShowProducts\x12\x1d.products.ShowProductsRequest\x1a\x1e.products.ShowProductsResponse\"\x00\x12Y\n" +
+	"\x11ShowProductsByIds\x12\".products.ShowProductsByIdsRequest\x1a\x1e.products.ShowProductsResponse\"\x00\x12I\n" +
 	"\n" +
 	"AddProduct\x12\x1b.products.AddProductRequest\x1a\x1c.products.AddProductResponse\"\x00\x12I\n" +
 	"\rDeleteProduct\x12\x1e.products.DeleteProductRequest\x1a\x16.google.protobuf.Empty\"\x00\x12U\n" +
@@ -699,43 +746,46 @@ func file_products_products_proto_rawDescGZIP() []byte {
 	return file_products_products_proto_rawDescData
 }
 
-var file_products_products_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_products_products_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_products_products_proto_goTypes = []any{
 	(*Product)(nil),                  // 0: products.Product
 	(*ShowProductsRequest)(nil),      // 1: products.ShowProductsRequest
-	(*ShowProductsResponse)(nil),     // 2: products.ShowProductsResponse
-	(*AddProductRequest)(nil),        // 3: products.AddProductRequest
-	(*AddProductResponse)(nil),       // 4: products.AddProductResponse
-	(*DeleteProductRequest)(nil),     // 5: products.DeleteProductRequest
-	(*IncreaseProductRequest)(nil),   // 6: products.IncreaseProductRequest
-	(*DecreaseProductRequest)(nil),   // 7: products.DecreaseProductRequest
-	(*Reservation)(nil),              // 8: products.Reservation
-	(*ReserveProductsRequest)(nil),   // 9: products.ReserveProductsRequest
-	(*CancelReservationRequest)(nil), // 10: products.CancelReservationRequest
-	(*DeleteReservationRequest)(nil), // 11: products.DeleteReservationRequest
-	(*emptypb.Empty)(nil),            // 12: google.protobuf.Empty
+	(*ShowProductsByIdsRequest)(nil), // 2: products.ShowProductsByIdsRequest
+	(*ShowProductsResponse)(nil),     // 3: products.ShowProductsResponse
+	(*AddProductRequest)(nil),        // 4: products.AddProductRequest
+	(*AddProductResponse)(nil),       // 5: products.AddProductResponse
+	(*DeleteProductRequest)(nil),     // 6: products.DeleteProductRequest
+	(*IncreaseProductRequest)(nil),   // 7: products.IncreaseProductRequest
+	(*DecreaseProductRequest)(nil),   // 8: products.DecreaseProductRequest
+	(*Reservation)(nil),              // 9: products.Reservation
+	(*ReserveProductsRequest)(nil),   // 10: products.ReserveProductsRequest
+	(*CancelReservationRequest)(nil), // 11: products.CancelReservationRequest
+	(*DeleteReservationRequest)(nil), // 12: products.DeleteReservationRequest
+	(*emptypb.Empty)(nil),            // 13: google.protobuf.Empty
 }
 var file_products_products_proto_depIdxs = []int32{
 	0,  // 0: products.ShowProductsResponse.products:type_name -> products.Product
-	8,  // 1: products.ReserveProductsRequest.reservations:type_name -> products.Reservation
+	9,  // 1: products.ReserveProductsRequest.reservations:type_name -> products.Reservation
 	1,  // 2: products.ProductService.ShowProducts:input_type -> products.ShowProductsRequest
-	3,  // 3: products.ProductService.AddProduct:input_type -> products.AddProductRequest
-	5,  // 4: products.ProductService.DeleteProduct:input_type -> products.DeleteProductRequest
-	6,  // 5: products.ProductService.IncreaseProductQuantity:input_type -> products.IncreaseProductRequest
-	7,  // 6: products.ProductService.DecreaseProductQuantity:input_type -> products.DecreaseProductRequest
-	9,  // 7: products.ProductService.ReserveProducts:input_type -> products.ReserveProductsRequest
-	10, // 8: products.ProductService.CancelReservation:input_type -> products.CancelReservationRequest
-	11, // 9: products.ProductService.DeleteReservation:input_type -> products.DeleteReservationRequest
-	2,  // 10: products.ProductService.ShowProducts:output_type -> products.ShowProductsResponse
-	4,  // 11: products.ProductService.AddProduct:output_type -> products.AddProductResponse
-	12, // 12: products.ProductService.DeleteProduct:output_type -> google.protobuf.Empty
-	12, // 13: products.ProductService.IncreaseProductQuantity:output_type -> google.protobuf.Empty
-	12, // 14: products.ProductService.DecreaseProductQuantity:output_type -> google.protobuf.Empty
-	12, // 15: products.ProductService.ReserveProducts:output_type -> google.protobuf.Empty
-	12, // 16: products.ProductService.CancelReservation:output_type -> google.protobuf.Empty
-	12, // 17: products.ProductService.DeleteReservation:output_type -> google.protobuf.Empty
-	10, // [10:18] is the sub-list for method output_type
-	2,  // [2:10] is the sub-list for method input_type
+	2,  // 3: products.ProductService.ShowProductsByIds:input_type -> products.ShowProductsByIdsRequest
+	4,  // 4: products.ProductService.AddProduct:input_type -> products.AddProductRequest
+	6,  // 5: products.ProductService.DeleteProduct:input_type -> products.DeleteProductRequest
+	7,  // 6: products.ProductService.IncreaseProductQuantity:input_type -> products.IncreaseProductRequest
+	8,  // 7: products.ProductService.DecreaseProductQuantity:input_type -> products.DecreaseProductRequest
+	10, // 8: products.ProductService.ReserveProducts:input_type -> products.ReserveProductsRequest
+	11, // 9: products.ProductService.CancelReservation:input_type -> products.CancelReservationRequest
+	12, // 10: products.ProductService.DeleteReservation:input_type -> products.DeleteReservationRequest
+	3,  // 11: products.ProductService.ShowProducts:output_type -> products.ShowProductsResponse
+	3,  // 12: products.ProductService.ShowProductsByIds:output_type -> products.ShowProductsResponse
+	5,  // 13: products.ProductService.AddProduct:output_type -> products.AddProductResponse
+	13, // 14: products.ProductService.DeleteProduct:output_type -> google.protobuf.Empty
+	13, // 15: products.ProductService.IncreaseProductQuantity:output_type -> google.protobuf.Empty
+	13, // 16: products.ProductService.DecreaseProductQuantity:output_type -> google.protobuf.Empty
+	13, // 17: products.ProductService.ReserveProducts:output_type -> google.protobuf.Empty
+	13, // 18: products.ProductService.CancelReservation:output_type -> google.protobuf.Empty
+	13, // 19: products.ProductService.DeleteReservation:output_type -> google.protobuf.Empty
+	11, // [11:20] is the sub-list for method output_type
+	2,  // [2:11] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
 	2,  // [2:2] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name
@@ -752,7 +802,7 @@ func file_products_products_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_products_products_proto_rawDesc), len(file_products_products_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

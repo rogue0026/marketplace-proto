@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	ProductService_ShowProducts_FullMethodName            = "/products.ProductService/ShowProducts"
+	ProductService_ShowProductsByIds_FullMethodName       = "/products.ProductService/ShowProductsByIds"
 	ProductService_AddProduct_FullMethodName              = "/products.ProductService/AddProduct"
 	ProductService_DeleteProduct_FullMethodName           = "/products.ProductService/DeleteProduct"
 	ProductService_IncreaseProductQuantity_FullMethodName = "/products.ProductService/IncreaseProductQuantity"
@@ -35,6 +36,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ProductServiceClient interface {
 	ShowProducts(ctx context.Context, in *ShowProductsRequest, opts ...grpc.CallOption) (*ShowProductsResponse, error)
+	ShowProductsByIds(ctx context.Context, in *ShowProductsByIdsRequest, opts ...grpc.CallOption) (*ShowProductsResponse, error)
 	AddProduct(ctx context.Context, in *AddProductRequest, opts ...grpc.CallOption) (*AddProductResponse, error)
 	DeleteProduct(ctx context.Context, in *DeleteProductRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	IncreaseProductQuantity(ctx context.Context, in *IncreaseProductRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
@@ -56,6 +58,16 @@ func (c *productServiceClient) ShowProducts(ctx context.Context, in *ShowProduct
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ShowProductsResponse)
 	err := c.cc.Invoke(ctx, ProductService_ShowProducts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productServiceClient) ShowProductsByIds(ctx context.Context, in *ShowProductsByIdsRequest, opts ...grpc.CallOption) (*ShowProductsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ShowProductsResponse)
+	err := c.cc.Invoke(ctx, ProductService_ShowProductsByIds_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -137,6 +149,7 @@ func (c *productServiceClient) DeleteReservation(ctx context.Context, in *Delete
 // for forward compatibility.
 type ProductServiceServer interface {
 	ShowProducts(context.Context, *ShowProductsRequest) (*ShowProductsResponse, error)
+	ShowProductsByIds(context.Context, *ShowProductsByIdsRequest) (*ShowProductsResponse, error)
 	AddProduct(context.Context, *AddProductRequest) (*AddProductResponse, error)
 	DeleteProduct(context.Context, *DeleteProductRequest) (*emptypb.Empty, error)
 	IncreaseProductQuantity(context.Context, *IncreaseProductRequest) (*emptypb.Empty, error)
@@ -156,6 +169,9 @@ type UnimplementedProductServiceServer struct{}
 
 func (UnimplementedProductServiceServer) ShowProducts(context.Context, *ShowProductsRequest) (*ShowProductsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ShowProducts not implemented")
+}
+func (UnimplementedProductServiceServer) ShowProductsByIds(context.Context, *ShowProductsByIdsRequest) (*ShowProductsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ShowProductsByIds not implemented")
 }
 func (UnimplementedProductServiceServer) AddProduct(context.Context, *AddProductRequest) (*AddProductResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method AddProduct not implemented")
@@ -213,6 +229,24 @@ func _ProductService_ShowProducts_Handler(srv interface{}, ctx context.Context, 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProductServiceServer).ShowProducts(ctx, req.(*ShowProductsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProductService_ShowProductsByIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ShowProductsByIdsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServiceServer).ShowProductsByIds(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductService_ShowProductsByIds_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServiceServer).ShowProductsByIds(ctx, req.(*ShowProductsByIdsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -353,6 +387,10 @@ var ProductService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ShowProducts",
 			Handler:    _ProductService_ShowProducts_Handler,
+		},
+		{
+			MethodName: "ShowProductsByIds",
+			Handler:    _ProductService_ShowProductsByIds_Handler,
 		},
 		{
 			MethodName: "AddProduct",

@@ -18,6 +18,10 @@ message ShowProductsRequest {
   uint64 items_per_page = 2;
 }
 
+message ShowProductsByIdsRequest {
+  repeated uint64 ids = 1;
+}
+
 message ShowProductsResponse {
   repeated Product products = 1;
 }
@@ -65,10 +69,12 @@ message DeleteReservationRequest {
 
 service ProductService {
   rpc ShowProducts(ShowProductsRequest) returns (ShowProductsResponse) {}
+  rpc ShowProductsByIds(ShowProductsByIdsRequest) returns (ShowProductsResponse) {}
   rpc AddProduct(AddProductRequest) returns (AddProductResponse) {}
   rpc DeleteProduct(DeleteProductRequest) returns (google.protobuf.Empty) {}
   rpc IncreaseProductQuantity(IncreaseProductRequest) returns (google.protobuf.Empty) {}
   rpc DecreaseProductQuantity(DecreaseProductRequest) returns (google.protobuf.Empty) {}
+  
   rpc ReserveProducts(ReserveProductsRequest) returns (google.protobuf.Empty) {}
   rpc CancelReservation(CancelReservationRequest) returns (google.protobuf.Empty) {}
   rpc DeleteReservation(DeleteReservationRequest) returns (google.protobuf.Empty) {}
